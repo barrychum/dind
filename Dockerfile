@@ -70,3 +70,27 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
     && rm -rf ./aws && rm awscliv2.zip
 
 
+# Install Google Cloud SDK
+# https://cloud.google.com/sdk/docs/install
+RUN apt-get update \
+    && echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | \
+    tee -a /etc/apt/sources.list.d/google-cloud-sdk.list \
+    && apt-get install apt-transport-https ca-certificates gnupg -y \
+    && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | \
+    apt-key --keyring /usr/share/keyrings/cloud.google.gpg add - \
+    && apt-get update -y && apt-get install -y google-cloud-sdk kubectl \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Optional components
+# RUN apt install google-cloud-sdk-app-engine-python -y
+# RUN apt install google-cloud-sdk-app-engine-python-extras -y
+# RUN apt install google-cloud-sdk-app-engine-java -y
+# RUN apt install google-cloud-sdk-app-engine-go -y
+# RUN apt install google-cloud-sdk-bigtable-emulator -y
+# RUN apt install google-cloud-sdk-cbt -y
+# RUN apt install google-cloud-sdk-datalab -y
+# RUN apt install google-cloud-sdk-datastore-emulator -y
+# RUN apt install google-cloud-sdk-firestore-emulator -y
+# RUN apt install google-cloud-sdk-pubsub-emulator -y
+# RUN apt install kubectl -y
+
