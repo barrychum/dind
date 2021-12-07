@@ -16,7 +16,7 @@ RUN apt-get update && \
       nano \
       procps && \
     curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add - && \
-    echo "deb [arch=amd64] https://download.docker.com/linux/debian buster stable" | tee /etc/apt/sources.list.d/docker.list && \
+    echo "deb [arch=amd64] https://download.docker.com/linux/debian bullseye stable" | tee /etc/apt/sources.list.d/docker.list && \
     apt-get update && \
     apt-get install --no-install-recommends -y docker-ce && \
     apt-get autoclean && \
