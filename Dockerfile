@@ -45,7 +45,6 @@ ENV container docker
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/usr/bin/tini", "--", "/entrypoint.sh"]
 
-
 # install eksctl
 # https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html
 # version 0.52.0
@@ -69,3 +68,5 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
     && unzip awscliv2.zip \
     && ./aws/install \
     && rm -rf ./aws && rm awscliv2.zip
+
+
